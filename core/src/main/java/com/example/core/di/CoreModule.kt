@@ -26,7 +26,7 @@ val databaseModule = module {
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            GithubDatabase::class.java, "Github.db"
+            GithubDatabase::class.java, "Github"
         ).fallbackToDestructiveMigration()
             .openHelperFactory(factory)
             .build()
