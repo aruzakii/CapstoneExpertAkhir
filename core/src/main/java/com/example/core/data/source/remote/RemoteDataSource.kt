@@ -1,6 +1,5 @@
 package com.example.core.data.source.remote
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.example.core.data.source.remote.network.ApiResponse
 import com.example.core.data.source.remote.network.ApiService
@@ -12,13 +11,13 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
-    @SuppressLint("SuspiciousIndentation")
     suspend fun getAllGithub(querry : String): Flow<ApiResponse<List<ItemsItem>>> {
         //get data from remote api
         return flow {
             try {
                 val response = apiService.getListUsers(querry)
                 val dataArray = response.items
+
                     if (dataArray.isNotEmpty()){
                         emit(ApiResponse.Success(response.items))
                     } else {
